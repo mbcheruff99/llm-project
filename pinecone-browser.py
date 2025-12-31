@@ -6,7 +6,7 @@ load_dotenv()
 pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
 dense_index = pc.Index("llm-project")
 
-user_query = "How can i remove a bookmark?" #!!!!!!
+user_query = input("User:  ") #!!!!
 
 results = dense_index.search(
   namespace="flamehamster",
