@@ -18,4 +18,11 @@ results = dense_index.search(
   }
 )
 
-print(results)
+documentation = ""
+
+for hit in results['result']['hits']:
+  fields = hit.get('fields')
+  chunk_text = fields.get('chunk_text')
+  documentation += chunk_text
+
+print(documentation)
