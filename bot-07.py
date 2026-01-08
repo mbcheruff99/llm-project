@@ -2,6 +2,8 @@ import os
 from dotenv import load_dotenv
 from openai import OpenAI
 from pinecone import Pinecone
+from langfuse.openai import OpenAI
+# import json
 
 load_dotenv()
 llm = OpenAI()
@@ -18,6 +20,7 @@ history = [
    * GuineaPigment, a drawing tool for creating/editing SVGs
    * EMRgency, an electronic medical record system
    * Verbiage++, a content management system."""},
+   {"role": "developer", "content": """ If the user asks a vague question or an unclear one, ask for more information. and if you don't know which GROSS product is being talked about ist the options and ask which one"""},
   {"role": "assistant", "content": assistant_message}
 ]
 
@@ -40,7 +43,7 @@ while user_input.lower() != "exit":
     documentation += chunk_text
 
   history += [
-    {"role": "user", "content": f"Here are exerpts from the offical GROSS documentation: {documentation}. Use whatever info from the above documentaion exerpts (an no other info) to answer the following query: {user_input}"}
+    {"role": "user", "content": f"Here are exerpts from the offical GROSS documentation: {documentation}. Use whatever info from the above documentaion exerpts  (an no other info) without mentioning where the info cme from, to answer the following query: {user_input}. "}
   ]
 
   response = llm.responses.create(
@@ -56,3 +59,5 @@ while user_input.lower() != "exit":
   ]
 
   user_input = input("User:  ")
+
+  # print(json.dumps(history, indent=2))
