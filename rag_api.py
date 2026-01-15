@@ -77,9 +77,11 @@ def system_prompt(rag_chunks=None):
             * The user might not be clear about which GROSS product they are using, proactively ask which one 
             * Do not mention "documentation excerpts", "excerpts" or "documentation" in your response
             * When giving step by step instructions, put each direction on its own line, for example:
+            <example>
                 1. do this
                 2. do that
                 3. try this
+            <example>
             * If you cannot find relevant information in the provided documentation, simply say: "I'm sorry, I don't have information about that"
 
             * Before you state any point other than a question, think carefully: which excerpt id does the advice come from? Use a special double-brackets notation before your advice to indicate the excerpt id that the advice comes from.
